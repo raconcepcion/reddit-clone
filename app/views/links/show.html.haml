@@ -14,7 +14,7 @@
       %span Downvote 
       %strong= @link.get_downvotes.size
 
-  %p #{@link.comments.count} comments
+  %p= pluralize(@link.comments.count, "comment")
 
   .comment-section
     - @link.comments.each do |comment|

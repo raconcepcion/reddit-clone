@@ -1,10 +1,15 @@
-%p#notice= notice
-%p
-  %strong Title:
-  = @link.title
-%p
-  %strong Url:
-  = @link.url
-= link_to 'Edit', edit_link_path(@link)
-|
-= link_to 'Back', links_path
+.container
+  %h1= @link.title
+  %p= link_to @link.url, "#{@link.url}"
+  -if @link.user == current_user
+    = link_to 'Edit', edit_link_path(@link), class: "btn btn-default"
+    = link_to 'Back', links_path, class: "btn btn-default"
+  - else 
+    = link_to like_link_path, method: :put, class: "btn btn-default btn-sm" do 
+      %i.ion-arrow-up-b
+      %span Upvote 
+      %strong= @link.get_upvotes.size
+    = link_to dislike_link_path, method: :put, class: "btn btn-default btn-sm" do 
+      %i.ion-arrow-down-b
+      %span Downvote 
+      %strong= @link.get_downvotes.size

@@ -18,7 +18,7 @@
 
   .comment-section
     - @link.comments.each do |comment|
-      %h5= comment.user.email
+      %h5= comment.user.name
       %p= comment.body
       = link_to 'Delete',[@link, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-sm"
 

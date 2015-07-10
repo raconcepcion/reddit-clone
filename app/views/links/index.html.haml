@@ -1,11 +1,11 @@
 .container
   - @links.each do |link|
     %h1= link_to link.title, link_path(link)
-    %p Submitted #{time_ago_in_words(link.created_at)} ago by #{link.user.email}
+    %p Submitted #{time_ago_in_words(link.created_at)} ago by #{link.user.name}
     = link_to 'View Link', link_path(link), class: "btn btn-default btn-sm"
     - if link.user == current_user
-      = link_to 'Edit', edit_link_path(link)
-      = link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }
+      = link_to 'Edit', edit_link_path(link), class: "btn btn-default"
+      = link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
     - else 
       = link_to like_link_path(link), method: :put, class: "btn btn-default btn-sm" do 
         %i.ion-arrow-up-b

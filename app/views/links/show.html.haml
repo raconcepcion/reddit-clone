@@ -13,3 +13,22 @@
       %i.ion-arrow-down-b
       %span Downvote 
       %strong= @link.get_downvotes.size
+
+  %p #{@link.comments.count} comments
+
+  .comment-section
+    - @link.comments.each do |comment|
+      %h5= comment.user.email
+      %p= comment.body
+      = link_to 'Delete',[@link, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-sm"
+
+  .comment-form
+    = simple_form_for [@link, Comment.new] do |f|
+      = f.text_area :body, class: "form-control"
+      = f.submit "Add Comment", class: "btn btn-primary"
+
+    
+
+
+
+  

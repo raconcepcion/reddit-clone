@@ -10,6 +10,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'haml-rails'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'ionicons-rails'
+gem 'simple_form'
 
 gem 'jquery-rails'
 gem 'turbolinks'

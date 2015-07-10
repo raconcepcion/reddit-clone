@@ -1,0 +1,28 @@
+.link-list {
+  margin: 80px 0;
+}
+
+.link-item {
+  &:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin: 40px 0 30px;
+    background-color: $lighter-gray;
+  }
+
+  h1 a {
+    color: $black;
+    &:hover, &:active, &:focus {
+      text-decoration: none;
+    }
+  }
+
+  p {
+    color: $gray;
+    font-size: 0.85em;
+  }
+  
+  .link-actions { float: right; }
+}

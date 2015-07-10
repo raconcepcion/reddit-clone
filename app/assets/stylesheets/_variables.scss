@@ -1,0 +1,17 @@
+// https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/_variables.scss
+
+//variables
+$green: #27B155;
+$black: #414141;
+$gray: #7B7B7B;
+$light-gray: #DCDCDC;
+$lighter-gray: #ECECEC;
+
+//mixins
+@mixin transition($value) {
+  -webkit-transition: $value;
+     -moz-transition: $value;
+       -o-transition: $value;
+          transition: $value;
+}
+

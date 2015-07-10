@@ -1,6 +1,6 @@
 .container
   %h1= @link.title
-  %p= link_to @link.url, "#{@link.url}"
+  %p= link_to @link.url, "http://www.#{@link.url}"
   -if @link.user == current_user
     = link_to 'Edit', edit_link_path(@link), class: "btn btn-default"
     = link_to 'Back', links_path, class: "btn btn-default"

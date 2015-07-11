@@ -1,0 +1,35 @@
+.default-navbar {
+  border-bottom: 1px solid $light-gray;
+  .navi {
+    height: 70px;
+    line-height: 70px;
+  }
+
+  .brand {
+    h2 {
+      margin: 0;
+      line-height: 70px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    a {
+      color: $black; 
+      @include transition(all 0.3s);
+      &:hover, &:active, &:focus {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .links a {
+    color: $gray; 
+    margin-left: 12px;
+    @include transition(all 0.3s);
+
+    &:hover, &:active, &:focus {
+      color: $green; 
+      text-decoration: none;
+    }
+  }
+}

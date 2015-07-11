@@ -1,0 +1,11 @@
+.btn {
+  @include transition(all 0.3s);
+}
+
+.btn-primary {
+  background-color: $green;
+  border: 1px solid darken($green, 10%);
+  &:hover, &:active, &:focus {
+    background-color: darken($green, 5%);
+  }
+}

@@ -1,8 +1,12 @@
-/*
- *= require_tree .
- *= require_self
-*/
+@import './variables';
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'ionicons';
+
+@import 'buttons';
+@import 'navbar';
+@import 'form';
+@import 'link_index';
+@import 'link_show';
+

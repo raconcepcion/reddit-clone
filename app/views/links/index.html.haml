@@ -1,17 +1,27 @@
 .container
-  - @links.each do |link|
-    %h1= link_to link.title, link_path(link)
-    %p Submitted #{time_ago_in_words(link.created_at)} ago by #{link.user.name}
-    = link_to 'View Link', link_path(link), class: "btn btn-default btn-sm"
-    - if link.user == current_user
-      = link_to 'Edit', edit_link_path(link), class: "btn btn-default"
-      = link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
-    - else 
-      = link_to like_link_path(link), method: :put, class: "btn btn-default btn-sm" do 
-        %i.ion-arrow-up-b
-        %span Upvote 
-        %strong= link.get_upvotes.size
-      = link_to dislike_link_path(link), method: :put, class: "btn btn-default btn-sm" do 
-        %i.ion-arrow-down-b
-        %span Downvote 
-        %strong= link.get_downvotes.size
+  .link-list
+    - @links.each do |link|
+      .link-item
+        .link-content
+          %h1= link_to link.title, link_path(link)
+          %p 
+            Submitted 
+            %strong #{time_ago_in_words(link.created_at)} 
+            ago by 
+            %strong #{link.user.name}
+
+          = link_to 'View Link', link_path(link), class: "btn btn-primary btn-sm"
+
+        .link-actions
+          - if link.user == current_user
+            = link_to 'Edit', edit_link_path(link), class: "btn btn-info btn-sm"
+            = link_to 'Delete', link, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm"
+          - else 
+            = link_to like_link_path(link), method: :put, class: "btn btn-default btn-sm" do 
+              %i.ion-arrow-up-b
+              %span Upvote 
+              %strong= link.get_upvotes.size
+            = link_to dislike_link_path(link), method: :put, class: "btn btn-default btn-sm" do 
+              %i.ion-arrow-down-b
+              %span Downvote 
+              %strong= link.get_downvotes.size

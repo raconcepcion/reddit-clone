@@ -1,34 +1,41 @@
 .container
-  %h1= @link.title
-  %p= link_to @link.url, "#{@link.url}"
-  -if @link.user == current_user
-    = link_to 'Edit', edit_link_path(@link), class: "btn btn-default"
-    = link_to 'Back', links_path, class: "btn btn-default"
-  - else 
-    = link_to like_link_path, method: :put, class: "btn btn-default btn-sm" do 
-      %i.ion-arrow-up-b
-      %span Upvote 
-      %strong= @link.get_upvotes.size
-    = link_to dislike_link_path, method: :put, class: "btn btn-default btn-sm" do 
-      %i.ion-arrow-down-b
-      %span Downvote 
-      %strong= @link.get_downvotes.size
+  .link-show-content
+    .link-header
+      %h2= @link.title
+      = link_to "Visit Url", "http://#{@link.url}", class: "btn btn-primary btn-sm"
+    .link-actions
+      -if @link.user == current_user
+        = link_to 'Edit', edit_link_path(@link), class: "btn btn-default"
+        = link_to 'Back', links_path, class: "btn btn-default"
+      - else 
+        = link_to like_link_path, method: :put, class: "btn btn-default btn-sm" do 
+          %i.ion-arrow-up-b
+          %span Upvote 
+          %strong= @link.get_upvotes.size
+        = link_to dislike_link_path, method: :put, class: "btn btn-default btn-sm" do 
+          %i.ion-arrow-down-b
+          %span Downvote 
+          %strong= @link.get_downvotes.size
 
-  %p #{@link.comments.count} comments
+    %hr.page-hr
+    %p.comment-count= pluralize(@link.comments.count, "comment")
+    %hr.page-hr
 
-  .comment-section
-    - @link.comments.each do |comment|
-      %h5= comment.user.name
-      %p= comment.body
-      = link_to 'Delete',[@link, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-sm"
+    .comment-section
+      - @link.comments.each do |comment|
+        .comment-item
+          %h4= comment.user.name
+          %p= comment.body
+          .comment-actions
+            = link_to 'Delete',[@link, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-sm"
 
-  .comment-form
-    = simple_form_for [@link, Comment.new] do |f|
-      = f.text_area :body, class: "form-control"
-      = f.submit "Add Comment", class: "btn btn-primary"
+    .comment-form
+      = simple_form_for [@link, Comment.new] do |f|
+        = f.text_area :body, class: "form-control"
+        = f.submit "Add Comment", class: "btn btn-primary pull-right"
+
+      
+
+
 
     
-
-
-
-  

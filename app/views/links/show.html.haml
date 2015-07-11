@@ -2,7 +2,7 @@
   .link-show-content
     .link-header
       %h2= @link.title
-      = link_to "Visit Url", "http://www.#{@link.url}", class: "btn btn-primary btn-sm"
+      = link_to "Visit Url", "http://#{@link.url}", class: "btn btn-primary btn-sm"
     .link-actions
       -if @link.user == current_user
         = link_to 'Edit', edit_link_path(@link), class: "btn btn-default"
